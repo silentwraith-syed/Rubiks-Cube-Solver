@@ -12,6 +12,7 @@
 #include "Solver/IDAstarSolver.h"
 //#include "PatternDatabases/CornerPatternDatabase.h"
 #include "PatternDatabases/CornerDBMaker.h"
+#include "Scanner/CubeScanner.h"
 
 using namespace std;
 

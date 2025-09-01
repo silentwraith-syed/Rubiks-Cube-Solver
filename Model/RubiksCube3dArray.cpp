@@ -49,7 +49,9 @@ public:
                 return COLOR::WHITE;
         }
     }
-
+    void setColor(FACE face, int row, int col, COLOR color) override {
+        cube[int(face)][row][col] = getColorLetter(color);
+    }
     bool isSolved() const override {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 3; j++) {

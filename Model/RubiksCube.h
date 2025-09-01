@@ -33,7 +33,8 @@ public:
         RED,
         BLUE,
         ORANGE,
-        YELLOW
+        YELLOW,
+        UNKNOWN
     };
 
     enum class MOVE {
@@ -53,7 +54,14 @@ public:
      * @param Face, row, and column index
      */
     virtual COLOR getColor(FACE face, unsigned row, unsigned col) const = 0;
-
+      /*
+     * Sets the color of the cell at (row, col) in the given face.
+     * If Rubik's Cube face is pointing at you, then the row numbering starts from the
+     * top to bottom, and column numbering starts from the left to right.
+     * The rows and columns are 0-indexed.
+     * @param Face, row, column and color.
+     */
+    virtual void setColor(FACE face, int row, int col, COLOR color) = 0;
     /*
      * Returns the first letter of the given COLOR
      * Eg: For COLOR::GREEN, it returns 'G'
