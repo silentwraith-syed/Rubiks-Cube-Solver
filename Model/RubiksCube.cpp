@@ -23,6 +23,7 @@ char RubiksCube::getColorLetter(COLOR color) {
         case COLOR::ORANGE:
             return 'O';
     }
+    return 'X'; // Default case for unknown colors
 }
 
 /*
@@ -67,6 +68,7 @@ string RubiksCube::getMove(MOVE ind) {
         case MOVE::B2:
             return "B2";
     }
+    return "UNKNOWN"; // Default case for unknown moves
 }
 
 /*
@@ -111,6 +113,7 @@ RubiksCube &RubiksCube::move(MOVE ind) {
         case MOVE::B2:
             return this->b2();
     }
+    return *this; // Default case - return unchanged
 }
 
 /*
@@ -155,6 +158,7 @@ RubiksCube &RubiksCube::invert(MOVE ind) {
         case MOVE::B2:
             return this->b2();
     }
+    return *this; // Default case - return unchanged
 }
 
 void RubiksCube::print() const {

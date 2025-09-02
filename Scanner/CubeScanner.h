@@ -2,8 +2,10 @@
 #define CUBESCANNER_H
 
 #include <opencv2/opencv.hpp>
-#include "RubiksCube.h"
-#include "bits/stdc++.h"
+#include <vector>
+#include <map>
+#include <iostream>
+#include "../Model/RubiksCube.h"
 
 using namespace std;
 using namespace cv;
@@ -19,7 +21,7 @@ private:
     VideoCapture cap;
     int boxSize;
 
-    static const map<RubiksCube::COLOR, Scalar> colorMap;
+    static const map<RubiksCube::COLOR, Scalar>& getColorMap();
 
     RubiksCube::COLOR classifyColor(const Vec3b& bgr);
     Vec3b medianColor(const Mat& frame, int centerX, int centerY, int region = 5);
@@ -27,6 +29,11 @@ private:
     vector<vector<RubiksCube::COLOR>> captureFace();
     Mat drawColorFace(const vector<vector<RubiksCube::COLOR>>& faceGrid);
     Mat drawFullCube(const vector<vector<vector<RubiksCube::COLOR>>>& cubeGrid);
+    
+    // Cube validation methods
+    bool validateCube(const RubiksCube& cube);
+    bool validateColorCount(const vector<vector<vector<RubiksCube::COLOR>>>& cubeGrid);
+    bool validateCenterColors(const vector<vector<vector<RubiksCube::COLOR>>>& cubeGrid);
 };
 
 #endif //CUBESCANNER_H
